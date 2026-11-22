@@ -1,0 +1,63 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 1692 >>
+stream
+BT
+/F1 12 Tf 1 0 0 1 240 750 Tm (ACCOUNT STATEMENT) Tj
+/F1 9 Tf 1 0 0 1 40 720 Tm (FIRST HOLDER NAME) Tj
+/F1 9 Tf 1 0 0 1 160 720 Tm (ALEX TAYLOR) Tj
+/F1 9 Tf 1 0 0 1 340 720 Tm (ACCOUNT NO.) Tj
+/F1 9 Tf 1 0 0 1 430 720 Tm (IN300000 - 12345678) Tj
+/F1 9 Tf 1 0 0 1 340 705 Tm (STATEMENT PERIOD) Tj
+/F1 9 Tf 1 0 0 1 430 705 Tm (April 01, 2025 to March 31, 2026) Tj
+/F1 10 Tf 1 0 0 1 40 680 Tm (Balances for ISINs for which no transactions were recorded during the period April 01, 2025 to March 31, 2026) Tj
+/F1 9 Tf 1 0 0 1 40 650 Tm (ISIN) Tj
+/F1 9 Tf 1 0 0 1 140 650 Tm (Scrip Name) Tj
+/F1 9 Tf 1 0 0 1 460 650 Tm (Quantity) Tj
+/F1 9 Tf 1 0 0 1 525 650 Tm (Value) Tj
+/F1 8 Tf 1 0 0 1 40 628 Tm (INE000A01011) Tj
+/F1 8 Tf 1 0 0 1 140 628 Tm (ACME TECHNOLOGIES LIMITED EQ \(Rs. 350.50\) /- Beneficiary Balance) Tj
+/F1 8 Tf 1 0 0 1 465 628 Tm (100) Tj
+/F1 8 Tf 1 0 0 1 525 628 Tm (35050.00) Tj
+/F1 8 Tf 1 0 0 1 40 610 Tm (INE000B01022) Tj
+/F1 8 Tf 1 0 0 1 140 610 Tm (GLOBAL ENERGY CORP EQ NEW FV RS.2/- \(Rs. 210.25\) /- Beneficiary Balance) Tj
+/F1 8 Tf 1 0 0 1 465 610 Tm (250) Tj
+/F1 8 Tf 1 0 0 1 525 610 Tm (52562.50) Tj
+/F1 8 Tf 1 0 0 1 40 592 Tm (INE000C01033) Tj
+/F1 8 Tf 1 0 0 1 140 592 Tm (NORTHSTAR PHARMA LIMITED EQ \(Rs. 1420.00\) /- Beneficiary Balance) Tj
+/F1 8 Tf 1 0 0 1 465 592 Tm (40) Tj
+/F1 8 Tf 1 0 0 1 525 592 Tm (56800.00) Tj
+/F1 8 Tf 1 0 0 1 40 574 Tm (INE000D01044) Tj
+/F1 8 Tf 1 0 0 1 140 574 Tm (RIVERBANK FINANCIAL LTD EQ \(Rs. 88.40\) /- Beneficiary Balance) Tj
+/F1 8 Tf 1 0 0 1 465 574 Tm (500) Tj
+/F1 8 Tf 1 0 0 1 525 574 Tm (44200.00) Tj
+/F1 8 Tf 1 0 0 1 40 520 Tm (****** DISCLAIMER CLAUSE *******) Tj
+/F1 8 Tf 1 0 0 1 40 505 Tm (****END OF STATEMENT****) Tj
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000185 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+2055
+%%EOF

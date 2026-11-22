@@ -1,0 +1,71 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 2100 >>
+stream
+BT
+/F1 11 Tf 1 0 0 1 50 740 Tm (Statement of Transactions in Saving Account no. 009901071001 in INR for the period April 1, 2025 - March 31, 2026) Tj
+/F1 9 Tf 1 0 0 1 50 715 Tm (ALEX TAYLOR) Tj
+/F1 9 Tf 1 0 0 1 50 702 Tm (123 MAPLE STREET, SPRINGFIELD IL 62701) Tj
+/F1 9 Tf 1 0 0 1 40 650 Tm (S No.) Tj
+/F1 9 Tf 1 0 0 1 75 650 Tm (Transaction Date) Tj
+/F1 9 Tf 1 0 0 1 150 650 Tm (Cheque Number) Tj
+/F1 9 Tf 1 0 0 1 220 650 Tm (Transaction Remarks) Tj
+/F1 9 Tf 1 0 0 1 400 650 Tm (Withdrawal Amount \(INR\)) Tj
+/F1 9 Tf 1 0 0 1 475 650 Tm (Deposit Amount \(INR\)) Tj
+/F1 9 Tf 1 0 0 1 545 650 Tm (Balance \(INR\)) Tj
+/F1 9 Tf 1 0 0 1 40 625 Tm (1) Tj
+/F1 9 Tf 1 0 0 1 75 625 Tm (12.06.2025) Tj
+/F1 9 Tf 1 0 0 1 220 625 Tm (VISA trxn) Tj
+/F1 8 Tf 1 0 0 1 220 613 Tm (VIN/ONLINE STORE /202506120726/900201826001/) Tj
+/F1 9 Tf 1 0 0 1 410 625 Tm (615.00) Tj
+/F1 9 Tf 1 0 0 1 545 625 Tm (109599.26) Tj
+/F1 9 Tf 1 0 0 1 40 590 Tm (2) Tj
+/F1 9 Tf 1 0 0 1 75 590 Tm (30.06.2025) Tj
+/F1 9 Tf 1 0 0 1 220 590 Tm (Credit trxn) Tj
+/F1 8 Tf 1 0 0 1 220 578 Tm (009901071001:Int.Pd:29-03-2025 to 29-06-2025) Tj
+/F1 9 Tf 1 0 0 1 485 590 Tm (782.00) Tj
+/F1 9 Tf 1 0 0 1 545 590 Tm (110381.26) Tj
+/F1 9 Tf 1 0 0 1 40 555 Tm (3) Tj
+/F1 9 Tf 1 0 0 1 75 555 Tm (30.12.2025) Tj
+/F1 9 Tf 1 0 0 1 220 555 Tm (Debit trxn) Tj
+/F1 8 Tf 1 0 0 1 220 543 Tm (DCARDFEE0001NOV25-OCT26+GST) Tj
+/F1 9 Tf 1 0 0 1 410 555 Tm (354.00) Tj
+/F1 9 Tf 1 0 0 1 545 555 Tm (110027.26) Tj
+/F1 9 Tf 1 0 0 1 40 520 Tm (4) Tj
+/F1 9 Tf 1 0 0 1 75 520 Tm (30.03.2026) Tj
+/F1 9 Tf 1 0 0 1 220 520 Tm (Credit trxn) Tj
+/F1 8 Tf 1 0 0 1 220 508 Tm (009901071001:Int.Pd:31-12-2025 to 29-03-2026) Tj
+/F1 9 Tf 1 0 0 1 485 520 Tm (677.00) Tj
+/F1 9 Tf 1 0 0 1 545 520 Tm (110704.26) Tj
+/F1 9 Tf 1 0 0 1 50 440 Tm (This is a system generated statement. Hence, it does not require any signature.) Tj
+/F1 9 Tf 1 0 0 1 50 410 Tm (Legends for transactions in your Account Statement) Tj
+/F1 8 Tf 1 0 0 1 50 392 Tm (BIL - Internet Bill payment or funds transfer to Third party) Tj
+/F1 8 Tf 1 0 0 1 50 380 Tm (NEFT - National Electronics Funds Transfer System) Tj
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000185 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+2463
+%%EOF

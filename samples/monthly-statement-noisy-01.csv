@@ -1,0 +1,71 @@
+
+,Your Relationship Manager :,
+,Contact Number :,
+,E-mail ID :,
+,Your Customer Service Manager :,
+-,Contact Number :,
+,E-mail ID :,
+
+
+STATEMENT SUMMARY for Customer ID : XX as on 
+
+,Your Relationship Manager :,
+,Contact Number :,
+,E-mail ID :,
+,Your Customer Service Manager :,
+-,Contact Number :,
+,E-mail ID :,
+
+
+STATEMENT SUMMARY for Customer ID : XX as on 
+
+,Your Relationship Manager :,
+,Contact Number :,
+,E-mail ID :,
+,Your Customer Service Manager :,
+-,Contact Number :,
+,E-mail ID :,
+
+
+STATEMENT SUMMARY for Customer ID : XX as on 
+MR. ALEX TAYLOR
+123 MAPLE STREET,Your Relationship Manager :,-
+SPRINGFIELD IL 62701,Contact Number :,-
+,E-mail ID :,-
+.,Your Customer Service Manager :,-
+.-UNITED STATES - 000000,Contact Number :,-
+,E-mail ID :,-
+
+
+STATEMENT SUMMARY for Customer ID : XXXXX0001 as on November 30  2024
+ACCOUNT DETAILS - INR
+
+ACCOUNT TYPE,A/C. BALANCE (I), FIXED DEPOSITS (LINKED) BAL. (II), TOTAL BALANCE (I+II), NOMINATION
+Savings - NRE A/c XXXXXXXX1001,105420.50,0.00,105420.50,Registered
+Total,105420.50,0.00,105420.50
+
+
+FIXED DEPOSITS -INR
+DEPOSIT NO., OPEN DATE, DEP. AMT. #, ROI%, PERIOD ,MAT. AMT. ^ ,MAT. DATE, BALANCE * ,NOMINATION
+009913020001,02-04-2024,50000.00,6.70, 390 Days,53680.00,27-04-2025,50000.00,Registered
+TOTAL ,,,,,50000.00
+
+Statement of Transactions in SavingsNumber: XXXXXXXX1001 in INR for the period -November 01  2024 - November 30  2024
+DATE,MODE,PARTICULARS,DEPOSITS,WITHDRAWALS,BALANCE
+01-11-2024,,B/F,0,0,110000.00
+05-11-2024,,VSI/ONLINE STORE /202411051120/900116257001/,0,1250.50,108749.50
+09-11-2024,NET BANKING,VIN/DIGITAL WALLET/202411092307/900117358002/,0,420.00,108329.50
+12-11-2024,,VISA REF ONLINE STORE 05 11 24,50.00,0,108379.50
+18-11-2024,NET BANKING,VIN/GROCERY MART /202411180818/900102044003/,0,3859.00,104520.50
+30-11-2024,,009901071001:Int.Pd:30-08-2024 to 29-11-2024,900.00,0,105420.50
+
+
+Summary of TDS/Interest on Fixed Deposits during the periodNovember 01  2024 - November 30  2024
+ACCOUNT NUMBER,DATE OF PAYMENT/CREDIT,INTEREST PAID/CREDITED (INR),TAX DEDUCTED (INR)
+Opening Balance (Cumulative),,1100.00,0.00
+009901071001,30-11-2024,900.00,0.00
+Closing Balance (Cumulative),,2000.00,0.00
+
+Account Related Other Information
+ACCOUNT TYPE, ACCOUNT NUMBER, MICR CODE, IFS CODE, NAME OF NOMINEE*, NAME OF MANDATE HOLDER
+Savings - NRE,XXXXXXXX1001,400229000,BANK0000099,-,JORDAN TAYLOR

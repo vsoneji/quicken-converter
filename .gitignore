@@ -1,0 +1,26 @@
+# Dependencies & build output
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Private / real bank statements (NEVER commit)
+samples/do-not-commit/
+
+# Generated exports & local databases
+*.qif
+*.QIF
+*.db
+*.sqlite
+*.sqlite3
+data/
+
+# Logs & editor files
+logs/
+*.log
+npm-debug.log*
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
