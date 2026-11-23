@@ -4,6 +4,13 @@ A **100% client-side, offline-capable** web application that converts downloaded
 
 Built with React, TypeScript, Vite, Tailwind CSS, and browser-native IndexedDB — ready to deploy on **GitHub Pages** or run locally with zero backend server.
 
+## Maintenance & Usage Policy
+
+This project is shared **as-is** and is **not actively maintained** for individual feature or bank-format requests.
+
+- **Use as-is**: Feel free to use the published GitHub Pages app directly (including the built-in **Column Mapper** and reusable templates for custom formats).
+- **Customize via Fork & PR**: If you need support for additional statement layouts or custom behavior, please **fork this repository**, tailor it to your needs, and feel free to **submit a Pull Request** back into this repo.
+
 ## Privacy & Offline Guarantee
 
 - **Zero uploads**: Your files are read via the browser `File` API and parsed completely on your device. No statement data is ever sent over the network (verifiable in browser DevTools → Network).
@@ -22,6 +29,17 @@ Built with React, TypeScript, Vite, Tailwind CSS, and browser-native IndexedDB �
 - **Investment Holdings Snapshots**: Export `!Type:Prices` (update prices safely) or `!Type:Invst` (`ShrsIn` + `!Type:Prices`) for new holdings.
 - **Pre-Export QIF Integrity Check**: Independently re-parses generated `.qif` output before download to verify syntax, delimiter safety, and exact cent-level totals reconciliation.
 - **Global Config & JSON Backup/Restore**: Configure currency, QIF date format, default input date order (`DMY`/`MDY`), `!Account` header, cleared status, and line endings — and export/import your settings, account mappings, and templates as `.json`.
+
+## Supported Formats
+
+| Input | Capabilities | Notes |
+| --- | --- | --- |
+| **`.csv`** | UTF-8 BOM + Windows-1252 fallback, noisy boilerplate stripping, multi-account sections, split/signed/`Dr/Cr` amounts | Tier 1, Tier 2, or Tier 3 Column Mapper |
+| **`.xls` / `.xlsx`** | Legacy BIFF8 `.xls` & modern OOXML `.xlsx`, multi-sheet support, deposit summary detection | Tier 1, Tier 2, or Tier 3 Column Mapper |
+| **`.pdf`** | Unencrypted text-based bank statements (X/Y column alignment, wrapped remarks) & investment holdings snapshots | Encrypted & scanned image-only PDFs are rejected cleanly |
+
+### Try It with Included Sample Files
+The `samples/` directory contains 100% synthetic, anonymized fixtures (`.csv`, `.xlsx`, `.pdf`) covering noisy monthly statements, multi-account files, format drift, cryptic unknown columns, deposit summaries, and investment holdings snapshots.
 
 ## Local Development
 
@@ -48,6 +66,12 @@ npm run dev
 
 - **Financial Accuracy**: Always review the transaction/holdings preview and keep a backup of your Quicken data file before importing generated `.qif` files.
 - **Trademarks**: "Quicken" and "QIF" are referenced strictly for file-format interoperability. This open-source project is not affiliated with or endorsed by Quicken Inc.
+
+## Community & Security
+
+- [Contributing Guide](CONTRIBUTING.md)
+- [Security Policy](SECURITY.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
 
 ## License
 

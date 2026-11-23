@@ -4,7 +4,26 @@
   "private": false,
   "type": "module",
   "description": "100% offline, client-side web app to convert CSV, XLS, XLSX, and unencrypted PDF financial statements into verified Quicken Interchange Format (QIF) files.",
+  "author": {
+    "name": "Vipul Soneji",
+    "url": "https://github.com/vsoneji"
+  },
+  "keywords": [
+    "qif",
+    "quicken",
+    "bank-statement",
+    "csv",
+    "excel",
+    "pdf",
+    "offline",
+    "privacy",
+    "pwa",
+    "personal-finance"
+  ],
   "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
