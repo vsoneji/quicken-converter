@@ -260,3 +260,16 @@ export function makeId(prefix: string): string {
   }
   return `${prefix}_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
 }
+
+export function buildNormalizedAccountKey(
+  kind: 'BANK' | 'INVST',
+  rawAccountNum: string,
+  fallback: string
+): string {
+  const digits = rawAccountNum.replace(/\D/g, '');
+  if (digits.length >= 4) {
+    return `${kind}-${digits.slice(-4)}`;
+  }
+  const slug = fallback.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  return `${kind}-${slug || 'default'}`;
+}

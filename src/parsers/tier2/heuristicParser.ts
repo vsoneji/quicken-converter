@@ -5,6 +5,7 @@ import type {
   TransactionRecord,
 } from '../../types/models';
 import {
+  buildNormalizedAccountKey,
   checkBalanceContinuity,
   derivePayee,
   inferDateOrderFromSamples,
@@ -179,7 +180,7 @@ export const heuristicParser: StatementParser = {
         const accountId = makeId('acc');
         accounts.push({
           id: accountId,
-          accountKey: `HEUR-${accountNumber}-${hIdx}`,
+          accountKey: buildNormalizedAccountKey('BANK', accountNumber, `${accountLabel}-${hIdx}`),
           accountNumberMasked: accountNumber,
           detectedType: 'Bank Account',
           currency,

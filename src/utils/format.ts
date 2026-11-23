@@ -22,6 +22,26 @@ export function formatBytes(bytes: number): string {
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
 }
 
+export function slugifyFilename(name: string): string {
+  return (
+    name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '') || 'export'
+  );
+}
+
+export function formatFilenameTimestamp(date = new Date()): string {
+  const pad = (n: number) => (n < 10 ? `0${n}` : String(n));
+  const y = date.getFullYear();
+  const m = pad(date.getMonth() + 1);
+  const d = pad(date.getDate());
+  const hh = pad(date.getHours());
+  const mm = pad(date.getMinutes());
+  const ss = pad(date.getSeconds());
+  return `${y}-${m}-${d}_${hh}${mm}${ss}`;
+}
+
 export async function saveTextFile(
   content: string,
   suggestedName: string,

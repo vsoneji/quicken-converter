@@ -6,6 +6,7 @@ import type {
   TransactionRecord,
 } from '../../types/models';
 import {
+  buildNormalizedAccountKey,
   checkBalanceContinuity,
   derivePayee,
   inferDateOrderFromSamples,
@@ -105,7 +106,7 @@ function parseDetailedExcel(input: ParsedFileInput, ctx: ParseContext): ParseOut
     const accountId = makeId('acc');
     accounts.push({
       id: accountId,
-      accountKey: `DETAILED-${accountNum}`,
+      accountKey: buildNormalizedAccountKey('BANK', accountNum, sheet.name || 'detailed'),
       accountNumberMasked: masked,
       detectedType: 'Bank Account',
       currency,
@@ -222,7 +223,7 @@ function parseBankStatementPdf(input: ParsedFileInput, ctx: ParseContext): Parse
   const accountId = makeId('acc');
   const accountDraft: ParsedAccountDraft = {
     id: accountId,
-    accountKey: `PDF-BANK-${accountNum}`,
+    accountKey: buildNormalizedAccountKey('BANK', accountNum, 'pdf-bank'),
     accountNumberMasked: masked,
     detectedType: 'Bank Account (PDF)',
     currency,

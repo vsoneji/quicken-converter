@@ -5,7 +5,7 @@ import type {
   PdfTextItem,
   SkippedRowRecord,
 } from '../../types/models';
-import { makeId, parseAmount, parseDateToIso } from '../normalizers';
+import { buildNormalizedAccountKey, makeId, parseAmount, parseDateToIso } from '../normalizers';
 import type { ParseContext, ParsedAccountDraft, ParseOutput, StatementParser } from '../types';
 
 interface PdfLine {
@@ -86,7 +86,7 @@ export const holdingsPdfParser: StatementParser = {
     const masked = accountNum.length > 4 ? `XXXX${accountNum.slice(-4)}` : accountNum;
     const accountDraft: ParsedAccountDraft = {
       id: accountId,
-      accountKey: `INVST-${accountNum}`,
+      accountKey: buildNormalizedAccountKey('INVST', accountNum, 'investment'),
       accountNumberMasked: masked,
       detectedType: 'Investment / Demat Account',
       currency: ctx.config.currency,

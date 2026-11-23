@@ -20,7 +20,12 @@ import type {
 import { formatQifDate, generateHoldingsQif, generateTransactionsQif } from '../qif/generator';
 import { validateHoldingsQif, validateTransactionsQif } from '../qif/validator';
 import { SaveAsModal } from '../components/SaveAsModal';
-import { formatBytes, formatMoney } from '../utils/format';
+import {
+  formatBytes,
+  formatFilenameTimestamp,
+  formatMoney,
+  slugifyFilename,
+} from '../utils/format';
 
 interface PreviewPageProps {
   activeImport: ActiveImport;
@@ -67,6 +72,18 @@ export function PreviewPage({
     [accounts, activeImport.accountIds]
   );
 
+  // Deduplicated list of previously saved Quicken accounts (most recently updated first)
+  const savedAccountPresets = useMemo(() => {
+    const sorted = [...accounts].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+    const seen = new Set<string>();
+    return sorted.filter((a) => {
+      const key = `${a.quickenName.trim().toLowerCase()}|${a.quickenType}`;
+      if (!a.quickenName.trim() || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }, [accounts]);
+
   const [selectedAccountId, setSelectedAccountId] = useState<string>(
     importAccounts[0]?.id ?? 'ALL'
   );
@@ -76,6 +93,7 @@ export function PreviewPage({
   const [holdingsExportMode, setHoldingsExportMode] =
     useState<HoldingsExportMode>('prices_only');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [exportTimestamp, setExportTimestamp] = useState(() => formatFilenameTimestamp());
 
   // Ensure selectedAccountId stays valid if import changes
   const effectiveAccountId =
@@ -137,17 +155,16 @@ export function PreviewPage({
 
   // Build QIF & run round-trip validation when modal is open
   const exportBundle = useMemo(() => {
-    const today = new Date().toISOString().slice(0, 10);
     if (activeImport.importKind === 'holdings') {
       const acc = importAccounts[0];
       if (!acc) return null;
       const qif = generateHoldingsQif(acc, holdings, holdingsExportMode, config);
       const validation = validateHoldingsQif(qif, holdings, holdingsExportMode, config.qifDateFormat);
-      const safeName = acc.quickenName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const safeName = slugifyFilename(acc.quickenName);
       return {
         qif,
         validation,
-        filename: `${safeName}-${holdingsExportMode === 'prices_only' ? 'prices' : 'holdings'}-${today}.qif`,
+        filename: `${safeName}-${holdingsExportMode === 'prices_only' ? 'prices' : 'holdings'}-${exportTimestamp}.qif`,
         subtitle: `${acc.quickenName} · ${holdingsExportMode === 'prices_only' ? 'Prices Only (!Type:Prices)' : 'Add Holdings + Prices (!Type:Invst)'} · Date: ${config.qifDateFormat}`,
         isHoldings: true,
       };
@@ -162,16 +179,14 @@ export function PreviewPage({
       accountsToExport.some((a) => a.id === t.accountId)
     );
     const validation = validateTransactionsQif(qif, expectedTxs, config.qifDateFormat);
-    const safeName = (
+    const safeName = slugifyFilename(
       accountsToExport.length === 1 ? accountsToExport[0].quickenName : 'combined-accounts'
-    )
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-');
+    );
 
     return {
       qif,
       validation,
-      filename: `${safeName}-${today}.qif`,
+      filename: `${safeName}-${exportTimestamp}.qif`,
       subtitle: `Exporting ${accountsToExport.map((a) => a.quickenName).join(' + ')} · Date: ${config.qifDateFormat} · EOL: ${config.lineEnding}`,
       isHoldings: false,
     };
@@ -183,6 +198,7 @@ export function PreviewPage({
     holdings,
     holdingsExportMode,
     config,
+    exportTimestamp,
   ]);
 
   const canRemap =
@@ -245,7 +261,10 @@ export function PreviewPage({
           </button>
           {activeImport.importKind !== 'summary_only' && (
             <button
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => {
+                setExportTimestamp(formatFilenameTimestamp());
+                setIsModalOpen(true);
+              }}
               className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white flex items-center gap-1.5 cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
@@ -404,14 +423,47 @@ export function PreviewPage({
                   <label className="block text-xs text-slate-400 mb-1">
                     Quicken Account Name (<code>N</code>)
                   </label>
-                  <input
-                    type="text"
-                    value={activeAccount.quickenName}
-                    onChange={(e) =>
-                      onUpdateAccount({ ...activeAccount, quickenName: e.target.value })
-                    }
-                    className="w-full px-2.5 py-1.5 rounded-md text-xs bg-slate-950 border border-slate-700 text-slate-100 focus:outline-none focus:border-indigo-500"
-                  />
+                  <div className="flex gap-1.5">
+                    <input
+                      type="text"
+                      list="saved-quicken-accounts"
+                      value={activeAccount.quickenName}
+                      onChange={(e) =>
+                        onUpdateAccount({ ...activeAccount, quickenName: e.target.value })
+                      }
+                      className="flex-1 min-w-0 px-2.5 py-1.5 rounded-md text-xs bg-slate-950 border border-slate-700 text-slate-100 focus:outline-none focus:border-indigo-500"
+                    />
+                    {savedAccountPresets.length > 0 && (
+                      <select
+                        aria-label="Pick saved Quicken account"
+                        value=""
+                        onChange={(e) => {
+                          const picked = savedAccountPresets.find((p) => p.id === e.target.value);
+                          if (picked) {
+                            onUpdateAccount({
+                              ...activeAccount,
+                              quickenName: picked.quickenName,
+                              quickenType: picked.quickenType,
+                            });
+                          }
+                        }}
+                        className="px-2 py-1.5 rounded-md text-xs bg-slate-950 border border-slate-700 text-slate-300 max-w-28 cursor-pointer"
+                        title="Quick-pick a previously used Quicken account"
+                      >
+                        <option value="">Saved…</option>
+                        {savedAccountPresets.map((p) => (
+                          <option key={p.id} value={p.id}>
+                            {p.quickenName} ({p.quickenType})
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                  </div>
+                  <datalist id="saved-quicken-accounts">
+                    {savedAccountPresets.map((p) => (
+                      <option key={p.id} value={p.quickenName} />
+                    ))}
+                  </datalist>
                 </div>
                 <div>
                   <label className="block text-xs text-slate-400 mb-1">
@@ -612,14 +664,45 @@ export function PreviewPage({
                   <label className="block text-xs text-slate-400 mb-1">
                     Quicken Investment Account Name (<code>N</code>)
                   </label>
-                  <input
-                    type="text"
-                    value={importAccounts[0].quickenName}
-                    onChange={(e) =>
-                      onUpdateAccount({ ...importAccounts[0], quickenName: e.target.value })
-                    }
-                    className="w-full px-3 py-1.5 rounded-md text-xs bg-slate-950 border border-slate-700 text-slate-100"
-                  />
+                  <div className="flex gap-1.5">
+                    <input
+                      type="text"
+                      list="saved-quicken-invst-accounts"
+                      value={importAccounts[0].quickenName}
+                      onChange={(e) =>
+                        onUpdateAccount({ ...importAccounts[0], quickenName: e.target.value })
+                      }
+                      className="flex-1 min-w-0 px-3 py-1.5 rounded-md text-xs bg-slate-950 border border-slate-700 text-slate-100"
+                    />
+                    {savedAccountPresets.length > 0 && (
+                      <select
+                        aria-label="Pick saved investment account"
+                        value=""
+                        onChange={(e) => {
+                          const picked = savedAccountPresets.find((p) => p.id === e.target.value);
+                          if (picked) {
+                            onUpdateAccount({
+                              ...importAccounts[0],
+                              quickenName: picked.quickenName,
+                            });
+                          }
+                        }}
+                        className="px-2 py-1.5 rounded-md text-xs bg-slate-950 border border-slate-700 text-slate-300 max-w-28 cursor-pointer"
+                      >
+                        <option value="">Saved…</option>
+                        {savedAccountPresets.map((p) => (
+                          <option key={p.id} value={p.id}>
+                            {p.quickenName}
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                  </div>
+                  <datalist id="saved-quicken-invst-accounts">
+                    {savedAccountPresets.map((p) => (
+                      <option key={p.id} value={p.quickenName} />
+                    ))}
+                  </datalist>
                 </div>
               )}
               <div>

@@ -75,6 +75,21 @@ describe('IndexedDB storage and JSON backup/restore', () => {
     expect(await getAllAccounts()).toHaveLength(1);
     expect(await getAllTemplates()).toHaveLength(1);
 
+    // Re-importing the same account key must preserve user's custom Quicken name/type
+    const reimported = await upsertAccount({
+      id: 'a2-new-import',
+      accountKey: 'BANK-9999',
+      accountNumberMasked: 'XXXX9999',
+      detectedType: 'Savings',
+      currency: 'USD',
+      quickenName: 'Default Parser Name (9999)',
+      quickenType: 'Cash',
+      createdAt: '2026-02-01T00:00:00Z',
+      updatedAt: '2026-02-01T00:00:00Z',
+    });
+    expect(reimported.quickenName).toBe('My Savings');
+    expect(reimported.quickenType).toBe('Bank');
+
     // JSON Backup & Restore round-trip
     const backupText = await exportBackupJson();
     await saveConfig(DEFAULT_CONFIG);

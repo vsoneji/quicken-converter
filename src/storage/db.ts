@@ -119,8 +119,8 @@ export async function upsertAccount(account: AccountRecord): Promise<AccountReco
       accountNumberMasked: account.accountNumberMasked || existing.accountNumberMasked,
       detectedType: account.detectedType || existing.detectedType,
       currency: account.currency || existing.currency,
-      quickenName: account.quickenName || existing.quickenName,
-      quickenType: account.quickenType || existing.quickenType,
+      quickenName: existing.quickenName || account.quickenName,
+      quickenType: existing.quickenType || account.quickenType,
       updatedAt: new Date().toISOString(),
     };
     await db.put('accounts', merged);

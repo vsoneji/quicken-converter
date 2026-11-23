@@ -1,5 +1,6 @@
 import type { ParsedFileInput, SkippedRowRecord, TransactionRecord } from '../../types/models';
 import {
+  buildNormalizedAccountKey,
   checkBalanceContinuity,
   derivePayee,
   inferDateOrderFromSamples,
@@ -100,7 +101,7 @@ export const monthlyCsvParser: StatementParser = {
       const balCol = headerRow.indexOf('balance');
 
       const accountId = makeId('acc');
-      const accountKey = `MONTHLY-${accountNum}`;
+      const accountKey = buildNormalizedAccountKey('BANK', accountNum, `${accountType}-${accountNum}`);
       accounts.push({
         id: accountId,
         accountKey,

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CheckCircle2, AlertTriangle, Download, X } from 'lucide-react';
 import type { QifValidationResult } from '../qif/validator';
 import { formatMoney, saveTextFile } from '../utils/format';
@@ -27,6 +27,12 @@ export function SaveAsModal({
   onSaved,
 }: SaveAsModalProps) {
   const [filename, setFilename] = useState(defaultFilename);
+
+  useEffect(() => {
+    if (isOpen) {
+      setFilename(defaultFilename);
+    }
+  }, [isOpen, defaultFilename]);
 
   if (!isOpen) return null;
 
