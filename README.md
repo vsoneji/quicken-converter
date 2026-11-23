@@ -1,8 +1,23 @@
 # Bank Statement to QIF Converter
 
+[![CI](https://github.com/vsoneji/quicken-converter/actions/workflows/ci.yml/badge.svg)](https://github.com/vsoneji/quicken-converter/actions/workflows/ci.yml)
+[![Deploy to GitHub Pages](https://github.com/vsoneji/quicken-converter/actions/workflows/deploy.yml/badge.svg)](https://github.com/vsoneji/quicken-converter/actions/workflows/deploy.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![100% Client-Side](https://img.shields.io/badge/Privacy-100%25%20Client--Side-10b981.svg)](#privacy--offline-guarantee)
+
 A **100% client-side, offline-capable** web application that converts downloaded financial statements (`.csv`, `.xls`, `.xlsx`, and unencrypted `.pdf`) into verified **Quicken Interchange Format (`.qif`)** files.
 
-Built with React, TypeScript, Vite, Tailwind CSS, and browser-native IndexedDB — ready to deploy on **GitHub Pages** or run locally with zero backend server.
+## Use It Now (No Installation Required)
+
+👉 **[Open the Live Web App](https://vsoneji.github.io/quicken-converter/)**
+
+Most users **do not need to clone this repo or touch any code**:
+- Simply open the published webpage above and drag-and-drop your statement file.
+- Everything runs **100% inside your browser** — your files are never uploaded anywhere, and once loaded, the app even works with your internet disconnected.
+- If your bank's layout isn't auto-detected, use the built-in **Column Mapper** and save your mapping as a reusable template right in the browser.
+- Only bother with the source code below if you want to run it locally from source, fork it to customize behavior, or contribute a new built-in parser.
+
+Built with React, TypeScript, Vite, Tailwind CSS, and browser-native IndexedDB — hosted statically on **GitHub Pages** with zero backend server.
 
 ## Maintenance & Usage Policy
 

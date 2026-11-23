@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Info, RotateCcw, Settings } from 'lucide-react';
+import { ExternalLink, Info, RotateCcw, Settings, ShieldCheck } from 'lucide-react';
 import {
   DEFAULT_CONFIG,
   type AccountRecord,
@@ -275,7 +275,7 @@ export function App() {
     }`;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100">
       {/* Header */}
       <header className="sticky top-0 z-30 bg-slate-900/95 backdrop-blur border-b border-slate-800 px-6 py-3">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
@@ -340,7 +340,7 @@ export function App() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-6 py-6">
+      <main className="flex-1 w-full max-w-6xl mx-auto px-6 py-6">
         {view === 'upload' && (
           <UploadPage
             config={config}
@@ -394,6 +394,47 @@ export function App() {
 
         {view === 'about' && <AboutPage onGetStarted={() => setView('upload')} />}
       </main>
+
+      {/* Footer */}
+      <footer className="mt-10 border-t border-slate-800/80 bg-slate-900/60 px-6 py-5">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-400">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2 text-slate-300 font-medium">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span>100% Client-Side &amp; Offline — Your financial files never leave your browser.</span>
+            </div>
+            <p className="text-[11px] text-slate-500">
+              Open-source (MIT License), shared as-is. Not affiliated with Quicken Inc. Always back up your Quicken data before importing.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-4 shrink-0">
+            <button
+              onClick={() => setView('about')}
+              className="text-slate-400 hover:text-slate-100 transition cursor-pointer"
+            >
+              About
+            </button>
+            <a
+              href="https://github.com/vsoneji/quicken-converter"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-indigo-400 hover:text-indigo-300 font-medium transition"
+            >
+              GitHub Repo
+              <ExternalLink className="w-3 h-3" />
+            </a>
+            <a
+              href="https://github.com/vsoneji/quicken-converter/blob/main/LICENSE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-slate-100 transition"
+            >
+              MIT License
+            </a>
+          </div>
+        </div>
+      </footer>
 
       {/* Toast */}
       {toast && (

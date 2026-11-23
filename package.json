@@ -8,6 +8,11 @@
     "name": "Vipul Soneji",
     "url": "https://github.com/vsoneji"
   },
+  "homepage": "https://vsoneji.github.io/quicken-converter/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vsoneji/quicken-converter.git"
+  },
   "keywords": [
     "qif",
     "quicken",
